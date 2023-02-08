@@ -1,12 +1,12 @@
 <?php class Author {
- private int $id;
+ private $id;
  private string $firstName;
  private string $lastName;
- private string $biography;
+ private $biography;
  
-  public function __construct(string $firstName, string $lastName, string $biography)
+  public function __construct( $id = null, string $firstName, string $lastName, $biography= null)
     {
-        $this->id = -1;
+        $this->id = null;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->biography = $biography;

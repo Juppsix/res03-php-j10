@@ -1,13 +1,13 @@
 <?php class Book {
-    private int $id;
+    private $id;
  private string $title;
  private Author $author;
  private array $categories;
  
  
-   public function __construct(string $title, Author $author, array $categories)
+   public function __construct( $id = null, string $title, Author $author, array $categories)
     {
-        $this->id = -1;
+        $this->id = null;
         $this->title = $title;
         $this->author = $author;
         $this->categories = [];
@@ -27,7 +27,7 @@
         return $this->title;
     }
     
-    public function settitle() : void 
+    public function settitle(string $title) : void 
     {
         $this->title=$title;
     }
@@ -37,7 +37,7 @@
         return $this->author;
     }
     
-    public function setauthor() : void 
+    public function setauthor(Author $author) : void 
     {
         $this->author=$author;
     }
@@ -46,7 +46,7 @@
     {
      return $this->categories;
     }
-    public function setcategories(string $categories) : void
+    public function setcategories(array $categories) : void
     {
     $this->categories = $categories;
     }
@@ -54,8 +54,22 @@
     
          // public method
          
-         addCategory(Category $category) : array
+         public function addCategory(Category $category) : array
+         {
+               $this->categories[]=$category;
+               
+               return $this->categories;
+         }
          
-         removeBook(Book $book) : array
-         
+         public function removeCategory(Category $category) : array
+         {
+             foreach($this->categories as $key=>$cate){
+            
+            if($cate->getId() === $category->getId()){
+                
+                unset($this->categories[$key]);
+                
+            }
+         }
+         }   
 }
