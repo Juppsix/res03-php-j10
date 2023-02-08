@@ -55,6 +55,8 @@ public function __construct(  $id = null, string $dame, string $description, arr
     public function addBook(Book $book) : array 
     {
         $this->books[]=$book;
+        
+           return $this->books;
     }
     
     public function removeBook(Book $book) : array
@@ -65,5 +67,6 @@ public function __construct(  $id = null, string $dame, string $description, arr
                 unset($this->books[$key]);
             }
         }
+        return $this->books;
     }
 }
